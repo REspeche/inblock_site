@@ -307,3 +307,36 @@ function getRandomString(length) {
     }
     return result;
 };
+
+function loadJS(file, callback, error, type) {
+    var _file = file ;
+    var loaded = document.querySelector('script[src="'+file+'"]') ;
+
+    if (loaded) {
+      loaded.onload = callback ;
+      loaded.onreadystatechange = callback;
+      return
+    }
+
+    var script = document.createElement("script");
+
+    script.type = (typeof type ==="string" ? type : "application/javascript") ;
+
+    script.src = file;
+    script.async = false ;
+    script.defer = false ;
+    script.onload = callback ;
+
+    if (error) {
+       script.onerror = error ;
+    }
+    else {
+       script.onerror = function(e) {
+         console.error("Script File '" + _file + "' not found :-(");
+       };
+    }
+
+    script.onreadystatechange = callback;
+
+    document.body.appendChild(script);
+};

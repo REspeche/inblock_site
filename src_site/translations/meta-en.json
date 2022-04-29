@@ -20,7 +20,7 @@
     "LBL_GROSSRENT": "Gross Rent / month",
     "LBL_MONTHLYCOSTS": "Monthly Costs",
     "LBL_PROPERTYMANAGEMENT": "Property Management (8.00%)",
-    "LBL_PLATFORM": "Inblock Platform (2.00%)",
+    "LBL_PLATFORM": "inblox Platform (2.00%)",
     "LBL_PROPERTYMAINTENANCE": "Maintenance Expenses",
     "LBL_PROPERTYTAXES": "Property Taxes",
     "LBL_PROPERTYINSURANCE": "Insurance",
@@ -29,7 +29,7 @@
     "LBL_NETRENTANNUAL": "Net Rent / year",
     "LBL_ASSETPRICE": "Total Investment",
     "LBL_UNDERLYINGASSETPRICE": "Underlying Asset Price",
-    "LBL_PLATFORMLISTINGFEE": "Inblock Listing Fee (10%)",
+    "LBL_PLATFORMLISTINGFEE": "inblox Listing Fee (10%)",
     "LBL_INITMAINTENANCERESERVE": "Initial Maintenance Reserve",
     "LBL_RENOVATIONRESERVE": "Initial Renovation Reserve"
 }

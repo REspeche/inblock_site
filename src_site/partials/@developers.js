@@ -1,15 +1,14 @@
-angular.module('mainApp').controller('developersController', ['$scope', 'alertSvc', 'mainSvc', '$translate', 'CONSTANTS',
-    function ($scope, alertSvc, mainSvc, $translate, CONSTANTS) {
+angular.module('mainApp').controller('developersController', ['$scope', 'alertSvc', 'mainSvc', '$translate',
+    function ($scope, alertSvc, mainSvc, $translate) {
       $scope.formIAmDeveloper = {
           name: '',
           email: '',
           phone: '',
           message: ''
       };
-      $scope.recaptchaSecretClient = CONSTANTS.recaptcha;
 
       $scope.loadDevelopers = function() {
-
+        loadJS('https://www.google.com/recaptcha/api.js?render=' + $rootScope.recaptchaSecretClient);
       };
 
       $scope.toIAmDeveloper = function () {

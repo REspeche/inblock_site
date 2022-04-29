@@ -1,15 +1,14 @@
-angular.module('mainApp').controller('contactController', ['$scope', 'alertSvc', 'mainSvc', '$translate', 'CONSTANTS',
-    function ($scope, alertSvc, mainSvc, $translate, CONSTANTS) {
+angular.module('mainApp').controller('contactController', ['$scope', 'alertSvc', 'mainSvc', '$translate',
+    function ($scope, alertSvc, mainSvc, $translate) {
       $scope.formContactForm = {
           name: '',
           email: '',
           subject: '',
           comment: ''
       };
-      $scope.recaptchaSecretClient = CONSTANTS.recaptcha;
 
       $scope.loadContact = function() {
-
+        loadJS('https://www.google.com/recaptcha/api.js?render=' + $rootScope.recaptchaSecretClient);
       };
 
       $scope.toContactForm = function () {

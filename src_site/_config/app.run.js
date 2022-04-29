@@ -2,6 +2,7 @@ mainApp.run(['$rootScope', 'authenticationSvc', '$timeout', '$translate', 'setti
     function ($rootScope, authenticationSvc, $timeout, $translate, settingSvc, metaTagsSvc, CONSTANTS, cartSvc) {
         //init vars
         $rootScope.isBusy = false;
+        $rootScope.recaptchaSecretClient = CONSTANTS.recaptcha;
 
         $rootScope.$on( '$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
           if(toState.access && toState.access.isFree) return; // no need to redirect
