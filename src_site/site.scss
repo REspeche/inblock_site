@@ -648,16 +648,22 @@ img#incloux {
   background-size: cover; }
 
 .no-webp #carousel-inblock .slide1 {
-  background-image: url("/content/assets/img/slide/slide2.jpg"); }
-
-.webp #carousel-inblock .slide1 {
-  background-image: url("/content/assets/img/slide/webp/slide2.webp"); }
-
-.no-webp #carousel-inblock .slide2 {
   background-image: url("/content/assets/img/slide/slide1.jpg"); }
 
-.webp #carousel-inblock .slide2 {
+.webp #carousel-inblock .slide1 {
   background-image: url("/content/assets/img/slide/webp/slide1.webp"); }
+
+.no-webp #carousel-inblock .slide2 {
+  background-image: url("/content/assets/img/slide/slide2.jpg"); }
+
+.webp #carousel-inblock .slide2 {
+  background-image: url("/content/assets/img/slide/webp/slide2.webp"); }
+
+  .no-webp #carousel-inblock .slide3 {
+    background-image: url("/content/assets/img/slide/slide3.jpg"); }
+
+  .webp #carousel-inblock .slide3 {
+    background-image: url("/content/assets/img/slide/webp/slide3.webp"); }
 
 .video-play-icon {
   position: relative;
