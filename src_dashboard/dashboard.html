@@ -54,16 +54,24 @@
     <div class="label" translate="LOADING_PAGE">Wait a few seconds, loading information...</div>
   </div>
   <header>
-    <nav class="navbarInvisible fixed-top navbar-expand-lg scrolling-navbar double-nav" ng-hide="userInfo.isLogin">
-      <h5 class="display-5 white-text mb-0">
-        <a class="navbar-brand" href="#" ng-click="clickSite()" data-toggle="collapse" data-target=".navbar-collapse.show">
-          <img src="/content/assets/img/logoW.png" class="logo" />
-        </a>
-      </h5>
-      <div class="breadcrumb-dn mr-auto ml-5"></div>
-      <div class="d-flex change-mode mr-5" ng-show="viewChangeLanguage">
-        <flags-language></flags-language>
-      </div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" ng-hide="userInfo.isLogin">
+        <div class="container">
+
+            <!-- Brand and collapse menu -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a class="navbar-brand" href="#" ng-click="clickSite()" data-toggle="collapse" data-target=".navbar-collapse.show">
+                    <img src="/content/assets/img/logoW.png" class="logo" />
+                </a>
+              </li>
+            </ul>
+
+            <!-- Right icons only on desktop -->
+            <div class="d-md-block navbar-right" ng-show="viewChangeLanguage">
+              <flags-language></flags-language>
+            </div>
+
+        </div>
     </nav>
     <nav-bar ng-if="userInfo.isLogin"></nav-bar>
     <div id="slide-out" class="side-nav fixed wide sn-bg-4" elem-ready="loadSideNav()">

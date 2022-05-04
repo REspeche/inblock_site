@@ -2,7 +2,7 @@ mainApp.constant('BASE_URL', {
     'api': 'http://dashboard.inblock.tech:6680/api',
     'secured': true, //[true:default]
     'dashboard': 'http://dashboard.inblock.tech/',
-    'site': 'http://iinblock.tech/'
+    'site': 'http://inblock.tech/'
   })
   .constant('CONSTANTS', {
     'timeout_ajax': 35000, //milliseconds
