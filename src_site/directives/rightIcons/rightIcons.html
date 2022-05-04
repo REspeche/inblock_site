@@ -18,7 +18,7 @@
   <li class="nav-item avatar dropdown pt-1 pl-2" ng-show="userInfo.isLogin">
     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" title="{{ 'MNU_MY_PROFILE' | translate}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="clearfix d-none d-sm-inline-block" ng-bind="userInfo.name"></span>
-      <img class="rounded-circle img-fluid avatar ml-1" ng-src="{{(userInfo.avatar)?(pathProfile + userInfo.avatar):'/assets/img/not-available-avatar.png'}}">
+      <img class="rounded-circle img-fluid avatar ml-1" ng-src="{{(userInfo.avatar)?(pathProfile + userInfo.avatar):'/content/assets/img/not-available-avatar.png'}}">
     </a>
     <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="userDropdown">
       <a class="dropdown-item" data-toggle="collapse" data-target=".navbar-collapse.show" href="javascript:void(0)" ng-click="clickItemMenu(1)"><span translate="MNU_PANEL">Panel</span><span class="ml-1" ng-show="userInfo.role==2" translate="MNU_ADMIN">Admin</span></a>

@@ -17,7 +17,7 @@ angular.module('mainApp').controller('marketplaceController', ['$scope', 'mainSv
           $scope.lstProjects = angular.copy(response);
           angular.forEach($scope.lstProjects, function(item, key){
             item.imgBg = {
-                'background-image': 'url('+((item.image)?($scope.pathProject + item.image):'/assets/img/small/not-project.jpg')+')'
+                'background-image': 'url('+((item.image)?($scope.pathProject + item.image):'/content/assets/img/small/not-project.jpg')+')'
             };
             item.tokenPurchase = 1;
             item.estimatedAvailabilityStr = UnixTimeStampToDateTime(item.estimatedAvailabilityMiliSeconds);

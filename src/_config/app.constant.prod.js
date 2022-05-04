@@ -1,5 +1,5 @@
 mainApp.constant('BASE_URL', {
-    'api': 'http://dashboard.inblock.tech:6680/api',
+    'api': 'http://dashboard.inblock.tech:5680/api',
     'secured': true, //[true:default]
     'dashboard': 'http://dashboard.inblock.tech/',
     'site': 'http://inblock.tech/'
