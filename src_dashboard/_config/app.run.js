@@ -3,12 +3,12 @@ mainApp.run(['$rootScope', 'authenticationSvc', '$state', 'notificationSvc', 'ma
         //init vars
         $rootScope.isDashboard = true;
         $rootScope.isBusy = false;
-        $rootScope.viewChangeLanguage = true;
+        $rootScope.viewChangeLanguage = false;
 
         $rootScope.$on( '$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
           if(toState.access && toState.access.isFree) return; // no need to redirect
           $rootScope.isBusy = true;
-          $rootScope.viewChangeLanguage = true;
+          $rootScope.viewChangeLanguage = false;
           $rootScope.itemRoute = toState.name;
           // now, redirect only not authenticated
           if(!authenticationSvc.getUserInfo().isLogin) {
