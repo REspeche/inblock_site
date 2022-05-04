@@ -99,24 +99,17 @@
 
                     <!-- menu Left -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="#" ng-click="clickAction(105)" translate="MENU_PROJECTS">Proyectos</a>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" ng-click="clickAction(105)" translate="MENU_PROJECTS">Proyectos</a>
                         </li>
-                        <li class="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="font-weight-bold">+</span> <span translate="MENU_MORE_INFO">Info</span>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-popper-placement="null" data-mdb-popper="none">
-                              <li>
-                                <a class="dropdown-item" href="#" ng-click="clickAction(110)" translate="MENU_ABOUT">Sobre Nosotros</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item" href="#" ng-click="clickAction(113)" translate="MENU_DEVELOPERS">Soy Desarrollador</a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item" href="#" ng-click="clickAction(111)" translate="MENU_CONTACT">Contacto</a>
-                              </li>
-                            </ul>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" ng-click="clickAction(110)" translate="MENU_ABOUT">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" ng-click="clickAction(113)" translate="MENU_DEVELOPERS">Desarrollador</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#" ng-click="clickAction(111)" translate="MENU_CONTACT">Contacto</a>
                         </li>
                         <li class="nav-item" ng-hide="userInfo.isLogin">
                           <a href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse.show" ng-click="clickSignUp()" class="nav-link waves-effect text-info">

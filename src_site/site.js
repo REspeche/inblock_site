@@ -28,7 +28,7 @@ mainApp.controller('siteController', ['$scope', 'mainSvc', '$rootScope', 'action
 
 			$scope.$on('$viewContentLoaded', function () {
 				if ($("#load_screen").length == 1) {
-					$("#load_screen").delay(1000).fadeOut(function () {
+					$("#load_screen").delay(2000).fadeOut(function () {
 						$('body').addClass('enable-scroll');
 						$("#load_screen").remove();
 					});
