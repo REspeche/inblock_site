@@ -1,0 +1,24 @@
+{
+	"site": {
+		"1.0": {
+			"date": "01.24.2022",
+			"title": "Initial release",
+			"description": "First operational version of the site based on the services provided by the company.",
+			"last": {
+				"version": "1.0.47",
+				"date": "05/05/2022"
+			}
+		}
+	},
+	"dashboard": {
+		"1.0": {
+			"date": "05.01.2022",
+			"title": "Initial release",
+			"description": "Nothing to see here!",
+			"last": {
+				"version": "1.0.12",
+				"date": "05/05/2022"
+			}
+		}
+	}
+}

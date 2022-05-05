@@ -26,11 +26,11 @@ if (production()) {
   var now = new Date();
   if (argv.type=='site' || !argv.type) {
     var valVersionSite = incrementVersion('site');
-    var textVersionS = 'version: '+valVersionSite+'\ngenerated: '+dateFormat(now, "dd/mm/yyyy h:MM:ss");
+    var textVersionS = 'version: '+valVersionSite+'\ngenerated: '+dateFormat(now, "mm/dd/yyyy h:MM:ss");
   }
   if (argv.type=='dashboard' || !argv.type) {
     var valVersionDashboard = incrementVersion('dashboard');
-    var textVersionD = 'version: '+valVersionDashboard+'\ngenerated: '+dateFormat(now, "dd/mm/yyyy h:MM:ss");
+    var textVersionD = 'version: '+valVersionDashboard+'\ngenerated: '+dateFormat(now, "mm/dd/yyyy h:MM:ss");
   }
 }
 
@@ -108,31 +108,35 @@ function deleteBuildDashboard () {
 };
 
 //Create Framework folder
-function createFramework (done) {
-    //base
-    gulp.src(['framework/favicon/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
-    gulp.src(['framework/seo/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
-    gulp.src(['framework/files/*']).pipe(gulp.dest(pathBuildSite+'/content/files/'));
-    gulp.src(['base/favicon/**/*']).pipe(gulp.dest(pathBuildDashboard+'/'));
-    //framework
-    gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildSite+'/content/framework/'));
-    gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildDashboard+'/content/framework/'));
-    done();
-};
-function createFrameworkSite (done) {
+function createStaticFiles (done) {
     //base
     gulp.src(['framework/favicon/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
     gulp.src(['framework/seo/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
     gulp.src(['framework/files/*']).pipe(gulp.dest(pathBuildSite+'/content/files/'));
     //framework
     gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildSite+'/content/framework/'));
+    gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildDashboard+'/content/framework/'));
+    //others
+    gulp.src('src_site/change_control.json').pipe(gulp.dest(pathBuildSite+'/'));
+    gulp.src('src_site/change_control.json').pipe(gulp.dest(pathBuildDashboard+'/'));
     done();
 };
-function createFrameworkDashboard (done) {
+function createStaticFilesSite (done) {
     //base
-    gulp.src(['base/favicon/**/*']).pipe(gulp.dest(pathBuildDashboard+'/'));
+    gulp.src(['framework/favicon/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
+    gulp.src(['framework/seo/**/*']).pipe(gulp.dest(pathBuildSite+'/'));
+    gulp.src(['framework/files/*']).pipe(gulp.dest(pathBuildSite+'/content/files/'));
+    //framework
+    gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildSite+'/content/framework/'));
+    //others
+    gulp.src('src_site/change_control.json').pipe(gulp.dest(pathBuildSite+'/'));
+    done();
+};
+function createStaticFilesDashboard (done) {
     //framework
     gulp.src(['framework/**/*']).pipe(gulp.dest(pathBuildDashboard+'/content/framework/'));
+    //others
+    gulp.src('src_site/change_control.json').pipe(gulp.dest(pathBuildDashboard+'/'));
     done();
 };
 
@@ -507,11 +511,31 @@ function incrementVersion(type) {
   vArray.vPatch = parseFloat(vArray.vPatch) + 1;
   var periodString = ".";
 
-  var newVersionNumber = vArray.vMajor + periodString +
-                         vArray.vMinor+ periodString +
-                         vArray.vPatch;
+  var baseVersion = vArray.vMajor + periodString + vArray.vMinor;
+  var newVersionNumber = baseVersion + periodString + vArray.vPatch;
 
   fs.writeFileSync('src_'+type+'/version.js', 'versionBuild = \''+newVersionNumber+'\';');
+
+  //change control json
+  var changeLogStr = fs.readFileSync('src_site/change_control.json', 'utf8');
+  if (changeLogStr) {
+    var changeLogJson = JSON.parse(changeLogStr);
+    if (changeLogJson) {
+      for (var keySite in changeLogJson){
+        if (keySite == type) {
+          for (var keyV in changeLogJson[keySite]){
+            if (keyV == baseVersion) {
+              let now = new Date();
+              changeLogJson[keySite][keyV].last.version = newVersionNumber;
+              changeLogJson[keySite][keyV].last.date = dateFormat(now, "mm/dd/yyyy");
+              fs.writeFileSync('src_site/change_control.json', JSON.stringify(changeLogJson, null, "\t"));
+            }
+          }
+        }
+      }
+    }
+  }
+
   return newVersionNumber;
 }
 
@@ -545,15 +569,15 @@ function watchFiles() {
 };
 
 // define complex tasks
-const build = gulp.series(deleteBuild, createFramework, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets);
-const buildSite = gulp.series(deleteBuildSite, createFrameworkSite, createTranslationsSite, compilePartialSiteJs, createAssetsSite);
-const buildDashboard = gulp.series(deleteBuildDashboard, createFrameworkDashboard, createTranslationsDashboard, compilePartialDashboardJs, createAssetsDashboard);
+const build = gulp.series(deleteBuild, createStaticFiles, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets);
+const buildSite = gulp.series(deleteBuildSite, createStaticFilesSite, createTranslationsSite, compilePartialSiteJs, createAssetsSite);
+const buildDashboard = gulp.series(deleteBuildDashboard, createStaticFilesDashboard, createTranslationsDashboard, compilePartialDashboardJs, createAssetsDashboard);
 
 const watch = gulp.parallel(watchFiles, connectServer);
-const full = gulp.series(deleteBuild, createFramework, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets, connectServer);
+const full = gulp.series(deleteBuild, createStaticFiles, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets, connectServer);
 const server = gulp.series(connectServer);
 
-const buildWatch = gulp.series(deleteBuild, createFramework, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets, watch);
+const buildWatch = gulp.series(deleteBuild, createStaticFiles, createTranslations, compilePartialSiteJs, compilePartialDashboardJs, createAssets, watch);
 
 // export tasks
 exports.build = build;

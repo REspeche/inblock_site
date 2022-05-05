@@ -36,6 +36,16 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
             .state('changelog', {
                 url: '/changelog',
                 templateUrl: 'templates/partials/changelog.html',
+                controller  : 'changeLogController',
+                resolve: {
+                    deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                        return $ocLazyLoad.load([{
+                            files: [
+                                'content/assets/js/partials/changelog.js'
+                            ]
+                        }]);
+                    }]
+                },
                 metadata: {
                     title: 'INBLOCK - Change Log'
                 }

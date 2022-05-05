@@ -7,5 +7,5 @@ cd ..
 echo "--> Copiando ZIP al servidor"
 sshpass -p "Ricard0Espech3" scp -P 2298 _deploy_server/dashboard.zip incloux@45.55.102.85:/var/www/dashboard.zip
 echo "--> Generando Deploy"
-sshpass -p "Ricard0Espech3" ssh incloux@45.55.102.85 -p 2298 "rm -rf /var/www/inblock.dashboard/*;unzip -qq /var/www/dashboard.zip -d /var/www/inblock.dashboard/;rm /var/www/dashboard.zip"
+sshpass -p "Ricard0Espech3" ssh incloux@45.55.102.85 -p 2298 "rm -rf /var/www/inblock.dashboard/*;unzip -qq /var/www/dashboard.zip -d /var/www/inblock.dashboard/;rm /var/www/dashboard.zip;cp /var/www/inblock.dashboard/change_control.json /var/www/inblock/"
 head -n 4 _build_dashboard/content/assets/js/version.js
