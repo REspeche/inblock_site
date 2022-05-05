@@ -14,19 +14,31 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK | Tokenized Crowdfunding Platform'
                 }
             })
             .state('about', {
                 url: '/about',
-                templateUrl: 'templates/partials/about.html'
+                templateUrl: 'templates/partials/about.html',
+                metadata: {
+                    title: 'INBLOCK - About Us'
+                }
             })
             .state('careers', {
                 url: '/careers',
-                templateUrl: 'templates/partials/careers.html'
+                templateUrl: 'templates/partials/careers.html',
+                metadata: {
+                    title: 'INBLOCK - Careers'
+                }
             })
             .state('changelog', {
                 url: '/changelog',
-                templateUrl: 'templates/partials/changelog.html'
+                templateUrl: 'templates/partials/changelog.html',
+                metadata: {
+                    title: 'INBLOCK - Change Log'
+                }
             })
             .state('contact', {
                 url: '/contact',
@@ -40,6 +52,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK - Contact Us'
                 }
             })
             .state('developers', {
@@ -54,11 +69,17 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK - I\'m a Developer'
                 }
             })
             .state('operative', {
                 url: '/operative',
-                templateUrl: 'templates/partials/operative.html'
+                templateUrl: 'templates/partials/operative.html',
+                metadata: {
+                    title: 'INBLOCK - How we working?'
+                }
             })
             .state('privacy-policy', {
                 url: '/privacypolicy',
@@ -72,6 +93,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK - Privacy Policy'
                 }
             })
             .state('terms-of-use', {
@@ -86,6 +110,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK - Terms of use'
                 }
             })
             .state('accessibility-statement', {
@@ -100,6 +127,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                             ]
                         }]);
                     }]
+                },
+                metadata: {
+                    title: 'INBLOCK - Accessibility Statement'
                 }
             })
             .state('marketplace', {
@@ -120,6 +150,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                 },
                 data: {
                     bodyClasses: 'marketplace-page'
+                },
+                metadata: {
+                    title: 'INBLOCK - Marketplace'
                 }
             })
             .state('project', {
@@ -160,6 +193,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                 },
                 data: {
                     bodyClasses: 'cart-page'
+                },
+                metadata: {
+                    title: 'INBLOCK - Cart'
                 }
             })
             .state('checkout', {
@@ -180,6 +216,9 @@ mainApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',
                 },
                 data: {
                     bodyClasses: 'checkout-page'
+                },
+                metadata: {
+                    title: 'INBLOCK - Checkout'
                 }
             })
             .state('order-received', {

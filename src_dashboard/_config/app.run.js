@@ -30,22 +30,7 @@ mainApp.run(['$rootScope', 'authenticationSvc', '$state', 'notificationSvc', 'ma
             if (!$rootScope.alerts.pull) notificationSvc.getAlerts();
           };
           //llama al servicio de configuracion si es que nunca lo llamo
-          if (!$rootScope.settings || !$rootScope.settings.pull) {
-            settingSvc.getSettings().then(function () {
-              $translate.onReady(function() {
-                metaTagsSvc.setDefaultTags({
-                  // General SEO
-                  'title': $translate.instant('TITLE') + ' - ' + $translate.instant('SUBTITLE') + ' v.' + versionBuild,
-                  'version': versionBuild,
-                  'dc.language': $rootScope.lang,
-                  // Indexing / Spiders
-                  'googlebot': 'index, follow',
-                  'bingbot': 'index, follow',
-                  'robots': 'index, follow'
-                });
-              });
-            });
-          }
+          if (!$rootScope.settings || !$rootScope.settings.pull) settingSvc.getSettings();
         });
 
         $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {

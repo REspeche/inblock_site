@@ -13,40 +13,7 @@ mainApp.run(['$rootScope', 'authenticationSvc', '$timeout', '$translate', 'setti
           // refresh count items of cart
           cartSvc.getCountCart();
           //llama al servicio de configuracion si es que nunca lo llamo
-          if (!$rootScope.settings || !$rootScope.settings.pull) {
-            settingSvc.getSettings().then(function () {
-              $translate.onReady(function() {
-                metaTagsSvc.setDefaultTags({
-                  // General SEO
-                  'title': $translate.instant('META_TITLE') + ' v.' + versionBuild,
-                  'version': versionBuild,
-                  'description': $translate.instant('META_DESCRIPTION'),
-                  'keywords': CONSTANTS.meta.keywords,
-                  'dc.language': $rootScope.lang,
-                  // Indexing / Spiders
-                  'googlebot': 'index, follow',
-                  'bingbot': 'index, follow',
-                  'robots': 'index, follow',
-                  // OpenGraph
-                  'og:site_name': $translate.instant('META_TITLE'),
-                  'og:type': 'website',
-                  'og:url': 'https://www.inblock.tech',
-                  'og:title': $translate.instant('META_TITLE'),
-                  'og:description': $translate.instant('META_DESCRIPTION'),
-                  'og:image': 'https://inblock.tech/assets/img/inblock.og.jpg',
-                  'og:image:type': 'image/jpg',
-                  'og:image:width': '1200',
-                  'og:image:height': '630',
-                  // Twitter
-                  'twitter:card': 'summary_large_image',
-                  'twitter:title': $translate.instant('META_TITLE'),
-                  'twitter:description': $translate.instant('META_DESCRIPTION'),
-                  'twitter:image': 'https://inblock.tech/assets/img/inblock.twiiter.jpg',
-                  'twitter:site': '@inblock'
-                });
-              });
-            });
-          }
+          if (!$rootScope.settings || !$rootScope.settings.pull) settingSvc.getSettings();
         });
 
         $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {

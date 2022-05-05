@@ -1,5 +1,5 @@
-angular.module('mainApp').controller('developersController', ['$scope', 'alertSvc', 'mainSvc', '$translate',
-    function ($scope, alertSvc, mainSvc, $translate) {
+angular.module('mainApp').controller('developersController', ['$scope', '$rootScope', 'alertSvc', 'mainSvc', '$translate',
+    function ($scope, $rootScope, alertSvc, mainSvc, $translate) {
       $scope.formIAmDeveloper = {
           name: '',
           email: '',
@@ -15,7 +15,7 @@ angular.module('mainApp').controller('developersController', ['$scope', 'alertSv
           if ($scope.formIAmDeveloper.name != '' && $scope.formIAmDeveloper.email != '' && $scope.formIAmDeveloper.phone != '') {
               $scope.isBusy = true;
               alertSvc.showAlert().notifyInfo($translate.instant('MSG_BUSSY'));
-              grecaptcha.execute($scope.recaptchaSecretClient, { action: 'contactPage' })
+              grecaptcha.execute($rootScope.recaptchaSecretClient, { action: 'contactPage' })
                   .then(function (token) {
                       // Verify the token on the server.
                       mainSvc.callService({

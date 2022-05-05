@@ -1,5 +1,5 @@
-angular.module('mainApp').controller('projectController', ['$scope', 'BASE_URL', 'mainSvc', '$stateParams', 'authenticationSvc', 'alertSvc',
-    function ($scope, BASE_URL, mainSvc, $stateParams, authenticationSvc, alertSvc) {
+angular.module('mainApp').controller('projectController', ['$scope', 'BASE_URL', 'mainSvc', '$stateParams', 'authenticationSvc', 'alertSvc', 'metaTagsSvc',
+    function ($scope, BASE_URL, mainSvc, $stateParams, authenticationSvc, alertSvc, metaTagsSvc) {
       var isLoadQuestions = false;
       var isLoadStory = false;
       var isLoadUpdate = false;
@@ -38,6 +38,11 @@ angular.module('mainApp').controller('projectController', ['$scope', 'BASE_URL',
         }).then(function (response) {
           if (response) {
             $scope.item = angular.copy(response.main);
+            // Dynamically set metadata
+            metaTagsSvc.loadMetadata({
+              title: 'INBLOCK | ' + $scope.item.title,
+              description: $scope.item.subtitle
+            });
             if (response.meta) {
               $scope.itemMeta = angular.copy(response.meta);
               $scope.itemMeta.strAssetRentStartDate = dateFormat(UnixTimeStampToDate($scope.itemMeta.assetRentStartDate, true),"yyyy-mm-dd");

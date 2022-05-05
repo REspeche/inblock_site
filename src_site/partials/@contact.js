@@ -1,5 +1,5 @@
-angular.module('mainApp').controller('contactController', ['$scope', 'alertSvc', 'mainSvc', '$translate',
-    function ($scope, alertSvc, mainSvc, $translate) {
+angular.module('mainApp').controller('contactController', ['$scope', '$rootScope', 'alertSvc', 'mainSvc', '$translate',
+    function ($scope, $rootScope, alertSvc, mainSvc, $translate) {
       $scope.formContactForm = {
           name: '',
           email: '',
